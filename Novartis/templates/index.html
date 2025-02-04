@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novartis Nest Hackathon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+    <div id="snow-container"></div>
+    <div class="content">
+        <img src="{{ url_for('static', filename='images/Novartis_188mx0m.png') }}" alt="Novartis Logo" class="logo">
+        <div class="title-box">
+            <h1 class="title">Novartis Nest Hackathon</h1>
+        </div>
+        <button id="find-trials-btn" class="find-button">Find 10 Similar Trials</button>
+        
+    </div>
+
+    <div id="form-container" class="hidden">
+        <!-- Option Selection -->
+        <div id="option-selection">
+            <label>
+                <input type="radio" name="input-option" value="nct-id" id="option-nct-id" checked>
+                Enter NCT ID
+            </label>
+            <label>
+                <input type="radio" name="input-option" value="all-inputs" id="option-all-inputs">
+                Enter All Inputs
+            </label>
+        </div>
+    
+        <!-- NCT ID Input -->
+        <div id="nct-id-input" class="input-section">
+            <label for="nct-id">NCT ID:</label>
+            <input type="text" id="nct-id" name="nct-id" placeholder="Enter NCT ID">
+        </div>
+    
+        <!-- Form Inputs -->
+        <div id="trials-form" class="input-section hidden">
+            <div class="divi" id="div1">
+                <div id='input1' class="inputs">
+                    <div class="title-box1">
+                        <label for="study-title">Study Title:</label>
+                    </div>
+                    <textarea id="study-title" name="study-title" rows="5" placeholder="Enter Study Title"></textarea>
+                </div>
+                <div id='input2' class="inputs">
+                    <div class="title-box1">
+                        <label for="primary-outcome">Primary Outcome:</label>
+                    </div>
+                    <textarea id="primary-outcome" name="primary-outcome" rows="5" placeholder="Enter Primary Outcome"></textarea>
+                </div>
+            </div>
+            <div class="divi" id="div2">
+                <div id='input3' class="inputs">
+                    <div class="title-box1">
+                        <label for="secondary-outcome">Secondary Outcome:</label>
+                    </div>
+                    <textarea id="secondary-outcome" name="secondary-outcome" rows="5" placeholder="Enter Secondary Outcome"></textarea>
+                </div>
+                <div id='input4' class="inputs">
+                    <div class="title-box1">
+                        <label for="criteria">Criteria:</label>
+                    </div>
+                    <textarea id="criteria" name="criteria" rows="5" placeholder="Enter Criteria"></textarea>
+                </div>
+            </div>
+        </div>
+    
+        <button id="submit" class="find-button1">Submit</button>
+    </div>
+
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <img src="{{ url_for('static', filename='images/dt.gif') }}" alt="Loading...">
+            <p>Processing...</p>
+        </div>
+    </div>
+
+    <div id="results-container" class="hidden">
+        <div class="title-box1">
+            <h2 class="title">Predictions</h2>
+            <ul id="results-list"></ul>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
